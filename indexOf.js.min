@@ -1,0 +1,11 @@
+var AP=Array.prototype;
+AP.indexOf=function(a,b){//searchElement,fromIndex
+	var i=b,o=this,x=o.length,l=x>>>0;
+	if(l!==0 && (i=(i===Infinity||isNaN(i))?0:parseInt(i),i<l)){
+		x=Math;
+		i=x.max(i>=0?i:l-x.abs(i),0);
+		x=a;
+		while(i<l){if(i in o && o[i]===x){return i;};i++;};
+	};
+	return -1;
+};
