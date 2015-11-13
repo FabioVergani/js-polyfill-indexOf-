@@ -1,0 +1,43 @@
+var AP=Array.prototype;
+AP.indexOf=function(searchElement,fromIndex){
+	var i=fromIndex,o=this,x=o.length,l=x>>>0;
+	if(l!==0 && (i=isNaN(i)?0:parseInt(i),i<l)){
+		x=Math;
+		i=x.max(i>=0?i:l-x.abs(i),0);
+		x=searchElement;
+		while(i<l){if(i in o && o[i]===x){return i;};i++;};
+	};
+	return -1;
+};
+//=======================================
+//Test1:
+var m = [2, 5, 9];
+console.log(m.indexOf(2)); // 0
+console.log(m.indexOf(7)); // -1
+console.log(m.indexOf(9, 2)); // 2
+console.log(m.indexOf(2, -1)); // -1
+console.log(m.indexOf(2, -3)); // 0
+//Test2:
+var indices = [];
+var array = ['a', 'b', 'a', 'c', 'a', 'd'];
+var element = 'a';
+var idx = array.indexOf(element);
+while (idx != -1) {
+  indices.push(idx);
+  idx = array.indexOf(element, idx + 1);
+}
+console.log(indices);
+// [0, 2, 4]
+
+//Test3:
+function fn (veggies, veggie) {
+    if (veggies.indexOf(veggie) === -1) {
+        veggies.push(veggie);
+        console.log('New veggies collection is : ' + veggies);
+    } else if (veggies.indexOf(veggie) > -1) {
+        console.log(veggie + ' already exists in the veggies collection.');
+    }
+}
+var veggies = ['potato', 'tomato', 'chillies', 'green-pepper'];
+fn(veggies, 'spinach'); // New veggies collection is : potato,tomato,chillies,green-papper,spinach
+fn(veggies, 'spinach'); // spinach already exists in the veggies collection.
